@@ -1,0 +1,25 @@
+package cr.dnc.ns.broom.repo;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import cr.dnc.ns.broom.domain.Category;
+
+public class Categories {
+	private static Set<Category> validCategories = new HashSet<>();
+	
+	public void init() {
+		add("PERSON", "PLACE", "ANIMAL", "COMPUTER", "OTHER");
+	}
+	
+	public void add(String... names) {
+		for (String name : names) {
+			add(name);
+		}
+	}
+	
+	public void add(String name) {
+		Category category = new Category(name);
+		validCategories.add(category);
+	}
+}

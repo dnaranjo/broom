@@ -1,0 +1,15 @@
+package cr.dnc.ns.broom.domain;
+
+public class Pair {
+	private Category key;
+	private String value;
+	
+	public Pair(final Category key, final String value) {
+		this.key = key;
+		this.value = value;
+	}
+
+	public Object getCategory() {
+		return this.key;
+	}
+}

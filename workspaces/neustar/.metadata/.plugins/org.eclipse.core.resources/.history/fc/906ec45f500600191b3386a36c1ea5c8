@@ -1,0 +1,5 @@
+package cr.dnc.ns.broom.dto;
+
+public class GsonTests {
+
+}

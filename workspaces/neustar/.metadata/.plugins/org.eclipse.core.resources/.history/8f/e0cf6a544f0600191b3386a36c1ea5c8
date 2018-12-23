@@ -1,0 +1,20 @@
+package cr.dnc.ns.broom.dto;
+
+import java.util.Set;
+import java.util.TreeSet;
+
+import cr.dnc.ns.broom.domain.Counter;
+import cr.dnc.ns.broom.domain.Pair;
+
+public class PairingResponse {
+	private final Set<Pair> processedList;
+	private final Set<Counter> count = new TreeSet<>();
+	
+	public PairingResponse(Set<Pair> processedList) {
+		super();
+		this.processedList = processedList;
+		updateCounters();
+	}
+	
+	
+}

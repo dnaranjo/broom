@@ -1,0 +1,42 @@
+package cr.dnc.ns.broom.controller;
+
+import java.util.stream.Collectors;
+
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+
+import cr.dnc.ns.broom.repo.Categories;
+
+@Path("/")
+public class CategoryController {
+	private Categories categoryRepo = new Categories();
+	
+	@GET
+	@Path("/category")
+	@Produces("application/json")
+	public String listValidCategories() {
+		String pattern = "{ \"validCategories\": [%s] }";
+		return String.format(pattern, Categories.getValidCategories()
+														.stream()
+														.map(c -> "\"" + c.getName() + "\"")
+														.collect(Collectors.joining(",")));
+	}
+	
+	@PUT
+	@Path("/category")
+	@Produces("text/plain")
+	public boolean addCategory(@QueryParam("name") final String name) {
+		return categoryRepo.add(name);
+	}
+	
+	@DELETE
+	@Path("/category")
+	@Produces("text/plain")
+	public boolean deleteCategory(@QueryParam("name") final String name) {
+		return categoryRepo.delete(name);
+	}
+}

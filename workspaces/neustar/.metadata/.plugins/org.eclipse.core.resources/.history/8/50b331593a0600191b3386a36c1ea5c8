@@ -1,0 +1,31 @@
+package cr.dnc.ns.broom.domain;
+
+public class Category {
+	private String name;
+	
+	public Category(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+	
+	/*public void setName(final String name) {
+		this.name = name;
+	}*/
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Category)) {
+			return false;
+		}
+		Category other = (Category) obj;
+		return this.name.equals(other.name);
+	}
+	
+	@Override
+	public int hashCode() {
+		return this.name.hashCode();
+	}
+}

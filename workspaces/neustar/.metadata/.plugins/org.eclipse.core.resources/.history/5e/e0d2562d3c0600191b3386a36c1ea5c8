@@ -1,0 +1,29 @@
+package cr.dnc.ns.broom.domain;
+
+public class Pair {
+	private Category key;
+	private String value;
+	
+	public Pair(final Category key, final String value) {
+		this.key = key;
+		this.value = value;
+	}
+
+	public Object getCategory() {
+		return this.key;
+	}
+	
+	@Override
+	public boolean equals(final Object obj) {
+		if (!(obj instanceof Pair)) {
+			return false;
+		}
+		Pair other = (Pair) obj;
+		return this.key.equals(other.key) && this.value.equals(other.value);
+	}
+	
+	@Override
+	public int hashCode() {
+		return this.key.hashCode();
+	}
+}

@@ -1,0 +1,12 @@
+package cr.dnc.ns.broom.dto;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+import cr.dnc.ns.broom.domain.Pair;
+
+public class PairingResponse {
+	private Set<Pair> processedList;
+	private final Map<Pair, Integer> count = new HashMap<>();
+}

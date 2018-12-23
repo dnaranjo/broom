@@ -1,0 +1,19 @@
+package cr.dnc.ns.broom.domain;
+
+public class Counter {
+	private final Category category;
+	private final int occurrences;
+	
+	public Counter(final Category category, final int occurrences) {
+		this.category = category;
+		this.occurrences = occurrences;
+	}
+	
+	public Category getCategory() {
+		return this.category;
+	}
+	
+	public int getOccurrences() {
+		return this.occurrences;
+	}
+}

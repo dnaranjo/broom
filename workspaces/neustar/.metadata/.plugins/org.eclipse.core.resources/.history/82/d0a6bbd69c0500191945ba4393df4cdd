@@ -1,0 +1,14 @@
+package com.mcnz.restful.java.example;
+import javax.ws.rs.*;
+
+@ApplicationPath("/")
+public class ScoreService {
+	@GET @Path("/score/wins")@Produces("text/plain")
+	public int getWins() {return Score.WINS;}
+	     
+	@GET @Path("/score/losses")@Produces("text/plain")
+	public int getLosses() {return Score.LOSSES;}
+	     
+	@GET @Path("/score/ties")@Produces("text/plain")
+	public int getTies() {return Score.TIES;}
+}

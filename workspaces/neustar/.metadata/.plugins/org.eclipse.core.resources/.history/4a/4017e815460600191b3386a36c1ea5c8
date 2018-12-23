@@ -1,0 +1,10 @@
+package cr.dnc.ns.broom.dto;
+
+import java.util.Set;
+
+import cr.dnc.ns.broom.domain.Pair;
+
+public class PairingResult {
+	private Set<Pair> processedList;
+	private final Map<Pair, Integer> count = new HashMap<>();
+}

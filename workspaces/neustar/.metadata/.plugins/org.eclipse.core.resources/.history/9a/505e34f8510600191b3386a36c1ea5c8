@@ -1,0 +1,25 @@
+package cr.dnc.ns.broom.dto;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+import cr.dnc.ns.broom.domain.Category;
+import cr.dnc.ns.broom.domain.Pair;
+
+public class GsonExample {
+	public static void main(String[] args) {
+		Set<Pair> processedList = new LinkedHashSet<>();
+		new Pair(new Category("PERSON"), "Bob Jones");
+		new Pair(new Category("ANIMAL"), "Cat");
+		new Pair(new Category("ANIMAL"), "Dog");
+		new Pair(new Category("COMPUTER"), "Mac");
+		new Pair(new Category("PERSON"), "Mac");
+		new Pair(new Category("PERSON"), "Mary");
+		new Pair(new Category("PLACE"), "Texas");
+		new Pair(new Category("OTHER"), "Tree");
+		new Pair(new Category("PLACE"), "Washington");
+		PairingResponse pr = new PairingResponse(processedList);
+		
+		
+	}
+}

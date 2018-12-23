@@ -1,0 +1,63 @@
+package cr.dnc.ns.broom.controller;
+
+import java.util.stream.Collectors;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+
+import com.google.gson.Gson;
+
+import cr.dnc.ns.broom.domain.Categories;
+
+/**
+ * This is the only controller that will behave as a servlet. The reason
+ * behind this decision is that we need to load the initial categories in
+ * memory and we can do that taking advantage of the HttpServlet.init method.
+ */
+@Path("/")
+public class CategoryController extends HttpServlet {
+	/**
+	 * Current version: 1
+	 */
+	private static final long serialVersionUID = 1L;
+	private Categories categoryRepo;
+	
+	public void init() throws ServletException {
+		categoryRepo = new Categories();
+		categoryRepo.init();
+	}
+	
+	@GET
+	@Path("/category")
+	@Produces("application/json")
+	public String listValidCategories() {
+		Gson gson = new Gson();
+		String json = gson.toJson(Categories.getValidCategories());
+		return json;
+		/*final String pattern = "{ \"validCategories\": [%s] }";
+		return String.format(pattern, Categories.getValidCategories()
+													.stream()
+													.map(c -> "\"" + c.getName() + "\"")
+													.collect(Collectors.joining(",")));*/
+	}
+	
+	@PUT
+	@Path("/category")
+	@Produces("text/plain")
+	public boolean addCategory(@QueryParam("name") final String name) {
+		return categoryRepo.add(name);
+	}
+	
+	@DELETE
+	@Path("/category")
+	@Produces("text/plain")
+	public boolean deleteCategory(@QueryParam("name") final String name) {
+		return categoryRepo.delete(name);
+	}
+}

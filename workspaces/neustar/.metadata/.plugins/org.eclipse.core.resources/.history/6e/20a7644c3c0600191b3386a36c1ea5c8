@@ -1,0 +1,24 @@
+package cr.dnc.ns.broom.controller;
+
+import java.util.List;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+
+import cr.dnc.ns.broom.domain.Pair;
+
+@Path("/")
+public class PairingController {
+	
+	
+	@POST
+	@Path("process")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public String process(@FormParam("pairs") final List<Pair> input) {
+		return null;
+	}
+}

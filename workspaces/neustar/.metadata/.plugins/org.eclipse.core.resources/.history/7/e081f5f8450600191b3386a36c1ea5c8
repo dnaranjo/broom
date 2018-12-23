@@ -1,0 +1,40 @@
+package cr.dnc.ns.broom.repo;
+
+import java.util.Set;
+import java.util.concurrent.CopyOnWriteArraySet;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+
+import cr.dnc.ns.broom.domain.Category;
+
+public class Categories extends HttpServlet {
+	/**
+	 * Current version: 1
+	 */
+	private static final long serialVersionUID = 1L;
+	private static final Set<Category> validCategories = new CopyOnWriteArraySet<>();
+	
+	public void init() throws ServletException {
+		add("PERSON", "PLACE", "ANIMAL", "COMPUTER", "OTHER");
+	}
+	
+	public void add(final String... names) {
+		for (final String name : names) {
+			add(name);
+		}
+	}
+	
+	public boolean add(final String name) {
+		final Category category = new Category(name);
+		return validCategories.add(category);
+	}
+	
+	public boolean delete(final String name) {
+		return validCategories.remove(new Category(name));
+	}
+	
+	public static Set<Category> getValidCategories() {
+		return new CopyOnWriteArraySet<>(validCategories);
+	}
+}

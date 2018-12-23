@@ -1,0 +1,48 @@
+package cr.dnc.ns.broom.dto;
+
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+import com.google.gson.Gson;
+
+import cr.dnc.ns.broom.domain.Category;
+import cr.dnc.ns.broom.domain.Pair;
+
+public class GsonExample {
+	public static void main(String[] args) {
+		Set<Pair> processedList = new LinkedHashSet<>();
+		processedList.add(new Pair(new Category("PERSON"), "Bob Jones"));
+		processedList.add(new Pair(new Category("ANIMAL"), "Cat"));
+		processedList.add(new Pair(new Category("ANIMAL"), "Dog"));
+		processedList.add(new Pair(new Category("COMPUTER"), "Mac"));
+		processedList.add(new Pair(new Category("PERSON"), "Mac"));
+		processedList.add(new Pair(new Category("PERSON"), "Mary"));
+		processedList.add(new Pair(new Category("PLACE"), "Texas"));
+		processedList.add(new Pair(new Category("OTHER"), "Tree"));
+		processedList.add(new Pair(new Category("PLACE"), "Washington"));
+		PairingResponse pr = new PairingResponse(processedList);
+		
+		Gson gson = new Gson();
+		
+		String json = gson.toJson(pr);
+		//System.out.println(json);
+		
+		PairingInputParam pip = new PairingInputParam();
+		pip.setPairs(new ArrayList<>());
+		pip.getPairs().add(new Pair(new Category("PERSON"), "Bob Jones"));
+		pip.getPairs().add(new Pair(new Category("PLACE"), "Washington"));
+		pip.getPairs().add(new Pair(new Category("PERSON"), "Mary"));
+		pip.getPairs().add(new Pair(new Category("COMPUTER"), "Mac"));
+		pip.getPairs().add(new Pair(new Category("PERSON"), "Bob Jones"));
+		pip.getPairs().add(new Pair(new Category("OTHER"), "Tree"));
+		pip.getPairs().add(new Pair(new Category("ANIMAL"), "Dog"));
+		pip.getPairs().add(new Pair(new Category("PLACE"), "Texas"));
+		pip.getPairs().add(new Pair(new Category("FOOD"), "Steak"));
+		pip.getPairs().add(new Pair(new Category("ANIMAL"), "Cat"));
+		pip.getPairs().add(new Pair(new Category("PERSON"), "Mac"));
+		
+		json = gson.toJson(pip);
+		System.out.println(json);
+	}
+}
