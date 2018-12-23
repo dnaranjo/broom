@@ -23,4 +23,18 @@ public class Counter implements Comparable {
 		final Counter other = (Counter) obj;
 		return other.occurrences - this.occurrences;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Counter)) {
+			return false;
+		}
+		Counter other = (Counter) obj;
+		return this.category.equals(other.category) && this.occurrences == other.occurrences;
+	}
+	
+	@Override
+	public int hashCode() {
+		return this.category.hashCode();
+	}
 }

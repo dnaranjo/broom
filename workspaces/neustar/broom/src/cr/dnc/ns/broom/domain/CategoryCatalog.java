@@ -13,6 +13,7 @@ public class CategoryCatalog {
 	private static final Set<Category> validCategories = new CopyOnWriteArraySet<>();
 	
 	public void init() {
+		CategoryCatalog.validCategories.clear();
 		add("PERSON", "PLACE", "ANIMAL", "COMPUTER", "OTHER");
 	}
 	
