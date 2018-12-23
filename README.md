@@ -12,7 +12,7 @@
 ## Deployment
 ### Prerequisites
 Although some of the components previously mentioned are not relevant when deploying the application, some others are definitely needed before moving forward, and are listed in this section:
-1. An instance of TomEE must already exist in the local machine under /opt/tomcat/. 
+1. An instance of TomEE must already exist in the local machine under /opt/tomcat/. The version used for development was 1.7.5 and was installed following this tutorial https://linuxize.com/post/how-to-install-tomcat-8-5-on-ubuntu-18.04/
 2. OpenJDK version 1.8 must be installed under /usr/lib/jvm/. This is needed for both Eclipse and TomEE.
 3. Likewise, a version of git and Eclipse is needed.
 
