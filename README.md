@@ -127,3 +127,6 @@ Since the service is hosted by a TomEE server, the Tomcat Manager app (available
 <user username="tomcat" password="s3cret" roles="manager-gui, manager-jmx"/>
 ```
 ## Additional considerations
+JRE and Tomcat settings in Eclipse provided for reference:
+![JRE settings in Eclipse](https://raw.githubusercontent.com/dnaranjo/broom/master/misc/jre.png)
+![TomEE settings in Eclipse](https://raw.githubusercontent.com/dnaranjo/broom/master/misc/tomcat.png)
